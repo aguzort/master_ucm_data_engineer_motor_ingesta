@@ -1,0 +1,21 @@
+{
+  "datasource": "tensorflow",
+  "dataset": "flower_photos",
+  "metadata": ["default", "size", "label"],
+  "source": {
+    "format": "cloudFiles",
+    "options": {
+      "cloudFiles.format": "binaryFile",
+      "recursiveFileLookup": "true"
+    }
+  },
+  "sink": {
+    "layer": "bronze",
+      "options":{
+      "mergeschema": "true"
+    }
+  },
+  "partition": {
+    "column": "_label"
+  }
+}
