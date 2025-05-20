@@ -1,0 +1,27 @@
+{
+  "datasource": "pizzerie",
+  "dataset": "orders",
+  "metadata": "default",
+  "flatten_value": "True",
+  "value_serializer": "json",
+  "key_serializer":"str",
+  "kafka_value_schema": "id long, shop string, name string, phoneNumber string, address string, pizzas array<struct<pizzaName:string, additionalToppings:array<string>>>",
+  "partition": {
+    "column": "key"
+  },
+
+  "source": {
+    "format": "kafka",
+    "options": {
+      "subscribe": "orders",
+      "includeHeaders" : "true",
+      "startingOffsets": "earliest"
+    }
+  },
+  "sink": {
+    "layer": "bronze",
+    "options": {
+      "mergeSchema": "true"
+    }
+  }
+}

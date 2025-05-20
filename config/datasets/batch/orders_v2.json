@@ -1,0 +1,27 @@
+{
+  "datasource": "pizzerie",
+  "dataset": "orders_v2",
+  "metadata": "default",
+  "flatten_value": "True",
+  "value_serializer": "avro",
+  "key_serializer":"str",
+
+  "partition": {
+    "column": "key"
+  },
+
+  "source": {
+    "format": "kafka",
+    "options": {
+      "subscribe": "orders_v2",
+      "includeHeaders" : "true",
+      "startingOffsets": "earliest"
+    }
+  },
+  "sink": {
+    "layer": "bronze",
+    "options": {
+      "mergeSchema": "true"
+    }
+  }
+}
