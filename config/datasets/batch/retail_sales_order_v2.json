@@ -1,0 +1,22 @@
+{
+  "datasource": "retail",
+  "dataset": "sales_orders",
+  "source_format":"cloudFiles",
+  "source_options": {
+                      "cloudFiles.format": "json",
+                      "cloudFiles.inferColumnTypes": "true",
+                      "cloudFiles.schemaEvolutionMode": "addNewColumns"
+                    },
+  "metadata_columns": "default",
+  "partition_column": "order_datetime",
+  "formatted_date_column_params": {
+                                    "output_col": "order_yyyymm",
+                                    "input_type": "unix",
+                                    "input_format": null,
+                                    "output_format": "yyyy-MM"
+                                  },
+  "sink_options": {
+                    "mergeSchema": "true"
+                  },
+  "trigger_mode" : {"availableNow": true}
+}

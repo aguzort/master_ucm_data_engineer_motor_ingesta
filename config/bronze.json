@@ -1,4 +1,4 @@
 {
-  "format": "delta",
-  "mode": "append"
+  "bronze_table_format": "delta",
+  "bronze_write_mode": "append"
 }
